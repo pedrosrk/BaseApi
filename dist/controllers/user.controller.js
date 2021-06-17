@@ -56,7 +56,6 @@ var createUser = function (req, res) { return __awaiter(void 0, void 0, void 0, 
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                console.log(req.params);
                 newUser = typeorm_1.getRepository(user_1.User).create(req.body);
                 return [4 /*yield*/, typeorm_1.getRepository(user_1.User).save(newUser)];
             case 1:
