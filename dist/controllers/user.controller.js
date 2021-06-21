@@ -36,79 +36,61 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteUser = exports.updateUser = exports.getUser = exports.createUser = exports.getUsers = void 0;
+exports.getUsers = exports.getHello = void 0;
 var typeorm_1 = require("typeorm");
 var user_1 = require("../entity/user");
+var getHello = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        return [2 /*return*/, res.send("This is my first app!!!!!!")];
+    });
+}); };
+exports.getHello = getHello;
 var getUsers = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var users;
+    var listUsers;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, typeorm_1.getRepository(user_1.User).find()];
             case 1:
-                users = _a.sent();
-                return [2 /*return*/, res.json(users)];
+                listUsers = _a.sent();
+                return [2 /*return*/, res.json(listUsers)];
         }
     });
 }); };
 exports.getUsers = getUsers;
-var createUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var newUser, results;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                newUser = typeorm_1.getRepository(user_1.User).create(req.body);
-                return [4 /*yield*/, typeorm_1.getRepository(user_1.User).save(newUser)];
-            case 1:
-                results = _a.sent();
-                return [2 /*return*/, res.json(results)];
-        }
-    });
-}); };
-exports.createUser = createUser;
-var getUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var results;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, typeorm_1.getRepository(user_1.User).findOne(req.params.id)];
-            case 1:
-                results = _a.sent();
-                return [2 /*return*/, res.json(results)];
-        }
-    });
-}); };
-exports.getUser = getUser;
-var updateUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var user, results;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, typeorm_1.getRepository(user_1.User).findOne(req.params.id)];
-            case 1:
-                user = _a.sent();
-                if (!user) return [3 /*break*/, 3];
-                typeorm_1.getRepository(user_1.User).merge(user, req.body);
-                return [4 /*yield*/, typeorm_1.getRepository(user_1.User).save(user)];
-            case 2:
-                results = _a.sent();
-                return [2 /*return*/, res.json(results)];
-            case 3: return [2 /*return*/, res.status(404).json({ msg: 'Not User found' })];
-        }
-    });
-}); };
-exports.updateUser = updateUser;
-var deleteUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var user, results;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, typeorm_1.getRepository(user_1.User).findOne(req.params.id)];
-            case 1:
-                user = _a.sent();
-                if (!user) return [3 /*break*/, 3];
-                return [4 /*yield*/, typeorm_1.getRepository(user_1.User).delete(req.params.id)];
-            case 2:
-                results = _a.sent();
-                return [2 /*return*/, res.json(results)];
-            case 3: return [2 /*return*/, res.status(404).json({ msg: 'Not User found' })];
-        }
-    });
-}); };
-exports.deleteUser = deleteUser;
+/*
+export const getUsers = async (req: Request, res: Response): Promise<Response> => {
+    const users = await getRepository(User).find();
+    return res.json(users)
+}
+ 
+export const createUser = async (req: Request, res: Response): Promise<Response> => {
+    //console.log(req.params)
+    const newUser = getRepository(User).create(req.body);
+    const results = await getRepository(User).save(newUser)
+    return res.json(results)
+}
+ 
+export const getUser = async ( req: Request, res: Response ): Promise<Response> => {
+    const results = await getRepository(User).findOne(req.params.id);
+    return res.json(results);
+  };
+ 
+export const updateUser = async ( req: Request, res: Response ): Promise<Response> => {
+  const user = await getRepository(User).findOne(req.params.id);
+  if (user){
+      getRepository(User).merge(user, req.body);
+      const results = await getRepository(User).save(user);
+      return res.json(results);
+  }
+  return res.status(404).json({msg: 'Not User found'})
+};
+
+export const deleteUser = async ( req: Request, res: Response ): Promise<Response> => {
+  const user = await getRepository(User).findOne(req.params.id);
+  if (user){
+      const results = await getRepository(User).delete(req.params.id);
+      return res.json(results);
+  }
+  return res.status(404).json({msg: 'Not User found'})
+};
+*/
