@@ -3,7 +3,7 @@ import {getRepository} from 'typeorm'
 import {User} from '../entity/user'
 
 export const getHello = async (req: Request, res: Response): Promise<Response> => {
-  return res.send("This is my first app!!!")
+  return res.send("This is my first app!!!!!!")
 }
 
 export const getUsers = async (req: Request, res: Response): Promise<Response> => {

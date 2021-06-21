@@ -41,7 +41,7 @@ var typeorm_1 = require("typeorm");
 var user_1 = require("../entity/user");
 var getHello = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        return [2 /*return*/, res.send("This is my first app!!!")];
+        return [2 /*return*/, res.send("This is my first app!!!!!!")];
     });
 }); };
 exports.getHello = getHello;
