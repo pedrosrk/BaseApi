@@ -1,7 +1,62 @@
 import {Request, Response} from 'express'
 import {getRepository} from 'typeorm'
 import {User} from '../entity/user'
- 
+
+export const getHello = async (req: Request, res: Response): Promise<Response> => {
+  return res.send("This is my first app!!!")
+}
+
+export const getUsers = async (req: Request, res: Response): Promise<Response> => {
+  const listUsers = await getRepository(User).find()
+  return res.json(listUsers)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 export const getUsers = async (req: Request, res: Response): Promise<Response> => {
     const users = await getRepository(User).find();
     return res.json(users)
@@ -37,4 +92,4 @@ export const deleteUser = async ( req: Request, res: Response ): Promise<Respons
   }
   return res.status(404).json({msg: 'Not User found'})
 };
-
+*/
